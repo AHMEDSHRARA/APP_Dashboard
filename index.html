@@ -30,7 +30,7 @@
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: var(--font-main); background: var(--bg-base); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; }
-
+ 
 /* SLIDE FRAME — 16:9 PowerPoint ratio */
 .ppt-frame {
   width: 100%;
@@ -43,7 +43,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
   position: relative;
   background: var(--bg-base);
 }
-
+ 
 /* Decorative grid bg */
 .ppt-frame::before {
   content: '';
@@ -63,7 +63,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
   background: linear-gradient(90deg, #1a8cff, #00d4e8, #2ecc87, #f5a623);
   z-index: 10;
 }
-
+ 
 /* ── HEADER ── */
 .dash-header {
   position: relative; z-index: 5;
@@ -84,7 +84,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 .brand-text { line-height: 1.2; }
 .brand-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 0.05em; text-transform: uppercase; }
 .brand-sub { font-size: 9px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.12em; }
-
+ 
 .nav-tabs { display: flex; gap: 3px; }
 .tab-btn {
   font-family: var(--font-main); font-size: 11px; font-weight: 500;
@@ -95,7 +95,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 }
 .tab-btn:hover { color: var(--text-primary); border-color: var(--border-bright); background: rgba(26,140,255,0.06); }
 .tab-btn.active { color: #fff; background: var(--accent-blue); border-color: var(--accent-blue); }
-
+ 
 .header-right { display: flex; align-items: center; gap: 10px; }
 .upload-btn {
   display: flex; align-items: center; gap: 6px;
@@ -116,12 +116,12 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
   animation: pulse 2s infinite;
 }
 @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
-
+ 
 /* ── PAGES ── */
 .dash-body { flex: 1; position: relative; z-index: 2; overflow: hidden; display: flex; flex-direction: column; }
 .page { display: none; flex: 1; padding: 14px 22px; overflow: hidden; }
 .page.active { display: flex; flex-direction: column; gap: 10px; }
-
+ 
 /* ── KPI ROW ── */
 .kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; flex-shrink: 0; }
 .kpi-card {
@@ -146,12 +146,12 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 .kpi-card.k-gold .kpi-value { color: var(--accent-gold); }
 .kpi-card.k-violet .kpi-value { color: var(--accent-violet); }
 .kpi-sub { font-size: 9px; color: var(--text-muted); }
-
+ 
 /* ── CHART GRID ── */
 .chart-row { display: grid; gap: 8px; flex: 1; min-height: 0; }
 .chart-row.cols-3 { grid-template-columns: 1fr 1fr 1.2fr; }
 .chart-row.cols-2 { grid-template-columns: 1.4fr 1fr; }
-
+ 
 .chart-card {
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: 8px; padding: 12px 14px;
@@ -169,7 +169,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 .badge-green { background: rgba(46,204,135,0.15); color: var(--accent-green); }
 .chart-wrap { flex: 1; min-height: 0; position: relative; }
 .chart-wrap canvas { width: 100% !important; height: 100% !important; }
-
+ 
 /* ── STATUS BARS ── */
 .status-bars { display: flex; flex-direction: column; gap: 6px; flex: 1; justify-content: center; }
 .status-row { display: flex; align-items: center; gap: 8px; }
@@ -178,7 +178,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 .status-bar-fill { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
 .status-count { font-size: 10px; color: var(--text-primary); width: 24px; text-align: right; flex-shrink: 0; }
 .status-pct { font-size: 9px; color: var(--text-muted); width: 28px; text-align: right; flex-shrink: 0; }
-
+ 
 /* ── TABLE ── */
 .table-wrap { flex: 1; overflow-y: auto; }
 .table-wrap::-webkit-scrollbar { width: 4px; }
@@ -208,7 +208,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 .s-tender { background: rgba(0,212,232,0.12); color: var(--accent-cyan); border: 1px solid rgba(0,212,232,0.25); }
 .s-eoi { background: rgba(139,92,246,0.15); color: var(--accent-violet); border: 1px solid rgba(139,92,246,0.25); }
 .s-other { background: rgba(255,77,106,0.1); color: var(--accent-red); border: 1px solid rgba(255,77,106,0.2); }
-
+ 
 /* ── FILTER BAR ── */
 .filter-bar { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .filter-bar select, .filter-bar input {
@@ -223,7 +223,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
   font-size: 9px; color: var(--accent-blue); cursor: pointer;
   background: none; border: none; text-decoration: underline; padding: 0;
 }
-
+ 
 /* ── EXECUTIVE SUMMARY PAGE ── */
 .exec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex: 1; min-height: 0; }
 .exec-section {
@@ -250,13 +250,13 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 .ep-bar-bg { flex: 1; height: 5px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
 .ep-bar-fill { height: 100%; border-radius: 3px; }
 .ep-val { font-size: 9px; color: var(--text-primary); width: 60px; text-align: right; flex-shrink: 0; }
-
+ 
 /* ── DONUT LEGEND ── */
 .donut-legend { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
 .legend-row { display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--text-secondary); }
 .legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
 .legend-val { margin-left: auto; color: var(--text-primary); font-weight: 500; }
-
+ 
 /* ── UPLOAD OVERLAY ── */
 .upload-overlay {
   position: absolute; inset: 0; z-index: 50;
@@ -284,7 +284,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 .upload-skip { margin-top: 12px; font-size: 11px; color: var(--text-muted); cursor: pointer; }
 .upload-skip:hover { color: var(--text-secondary); }
 #fileInput { display: none; }
-
+ 
 /* ── TIMELINE PAGE ── */
 .timeline-area { flex: 1; overflow-y: auto; }
 .timeline-area::-webkit-scrollbar { width: 4px; }
@@ -308,10 +308,10 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 .tl-sub { font-size: 9px; color: var(--text-muted); }
 .tl-owner { font-size: 9px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .tl-budget { font-size: 10px; color: var(--accent-gold); text-align: right; }
-
+ 
 /* ── PROGRESS PAGE ── */
 .page#page-progress { gap: 6px; }
-
+ 
 .progress-header {
   display: flex; align-items: center; justify-content: space-between;
   flex-shrink: 0; padding: 0 2px;
@@ -330,7 +330,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 .pg-leg-dot {
   width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
 }
-
+ 
 .progress-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -339,7 +339,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 }
 .progress-grid::-webkit-scrollbar { width: 3px; }
 .progress-grid::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
-
+ 
 .prog-card {
   background: #0d1a2e;
   border: 1px solid rgba(100,150,220,0.18);
@@ -387,14 +387,14 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
   padding-top: 5px; margin-top: 2px;
 }
 .prog-total span { color: #e0eaff; }
-
+ 
 /* label dots on donut slices */
 .prog-slice-label {
   position: absolute; font-family: var(--font-display);
   font-size: 11px; font-weight: 700; color: #fff;
   pointer-events: none; text-shadow: 0 0 4px rgba(0,0,0,0.8);
 }
-
+ 
 /* ── GLOBAL FILTER BAR ── */
 .global-filter-bar {
   position: relative; z-index: 4; flex-shrink: 0;
@@ -462,7 +462,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
   font-size: 9px; color: #3d5070;
   white-space: nowrap;
 }
-
+ 
 @media (max-width: 900px) {
   .kpi-row { grid-template-columns: repeat(3, 1fr); }
   .chart-row.cols-3 { grid-template-columns: 1fr 1fr; }
@@ -470,9 +470,9 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
 </style>
 </head>
 <body>
-
+ 
 <div class="ppt-frame" id="pptFrame">
-
+ 
   <!-- UPLOAD OVERLAY -->
   <div class="upload-overlay show" id="uploadOverlay">
     <div class="upload-box" id="uploadBox">
@@ -484,7 +484,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
       <div class="upload-skip" id="skipUpload">→ Use pre-loaded APP data</div>
     </div>
   </div>
-
+ 
   <!-- HEADER -->
   <header class="dash-header">
     <div class="header-brand">
@@ -510,7 +510,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
       <div class="live-badge"><div class="live-dot"></div><span id="dataLabel">Loading…</span></div>
     </div>
   </header>
-
+ 
   <!-- GLOBAL FILTER BAR -->
   <div class="global-filter-bar" id="globalFilterBar">
     <span class="gf-label">FILTER:</span>
@@ -539,10 +539,10 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
     <button class="gf-clear" onclick="clearGlobalFilter()">Clear</button>
     <span class="gf-count" id="gfCount"></span>
   </div>
-
+ 
   <!-- BODY -->
   <div class="dash-body">
-
+ 
     <!-- ═══ EXECUTIVE SUMMARY ═══ -->
     <section class="page active" id="page-executive">
       <div class="kpi-row" id="exec-kpi"></div>
@@ -550,12 +550,12 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
         <!-- filled by JS -->
       </div>
     </section>
-
+ 
     <!-- ═══ OVERVIEW ═══ -->
     <section class="page" id="page-overview">
       <div class="kpi-row" id="ov-kpi"></div>
       <div class="chart-row cols-3" style="flex:1; min-height:0;">
-
+ 
         <!-- STATUS DISTRIBUTION -->
         <div class="chart-card" style="display:flex;flex-direction:column;">
           <div class="card-header">
@@ -569,7 +569,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
             <div id="donutLegend" style="flex-shrink:0;display:flex;flex-direction:column;gap:5px;min-width:110px;"></div>
           </div>
         </div>
-
+ 
         <!-- BUDGET BY SUB-FUNCTION -->
         <div class="chart-card" style="display:flex;flex-direction:column;">
           <div class="card-header">
@@ -580,7 +580,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
             <canvas id="chartSubFunc" role="img" aria-label="Budget by sub-function bar chart"></canvas>
           </div>
         </div>
-
+ 
         <!-- PIPELINE BY QUARTER -->
         <div class="chart-card" style="display:flex;flex-direction:column;">
           <div class="card-header">
@@ -592,10 +592,10 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
             <canvas id="chartQuarter" role="img" aria-label="Projects by quarter bar chart"></canvas>
           </div>
         </div>
-
+ 
       </div>
     </section>
-
+ 
     <!-- ═══ PORTFOLIO ═══ -->
     <section class="page" id="page-portfolio">
       <div class="chart-card" style="flex:1; min-height:0;">
@@ -607,7 +607,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
         </div>
       </div>
     </section>
-
+ 
     <!-- ═══ TIMELINE ═══ -->
     <section class="page" id="page-timeline">
       <div class="kpi-row" style="grid-template-columns: repeat(4,1fr);" id="tl-kpi"></div>
@@ -619,7 +619,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
         <div class="timeline-area" id="timelineArea"></div>
       </div>
     </section>
-
+ 
     <!-- ═══ PROGRESS ═══ -->
     <section class="page" id="page-progress">
       <div class="progress-header">
@@ -635,19 +635,19 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
       </div>
       <div class="progress-grid" id="progressGrid"></div>
     </section>
-
+ 
   </div><!-- /dash-body -->
 </div><!-- /ppt-frame -->
-
+ 
 <script>
 /* ════════════════════════════════════════════
    DATA & CONSTANTS
 ════════════════════════════════════════════ */
 const PRELOADED = [{"subFunction":"AJYAD","demandPlan":"AJYAD - Specialty","description":"AJYAD - Specialty Geotech","owner":"Sameh Gomaa","budget":40000000,"y2025":9374409,"startDate":"2025-10-01","status":"Awarded","provider":"ACTS","quarter":"2025Q4"},{"subFunction":"AJYAD","demandPlan":"RITZ-CARLTON","description":"INTERIM TECHNICAL SERVICES AGREEMENT THE RITZ-CARLTON RESIDENCES","owner":"Sameh Gomaa","budget":328125,"y2025":328125,"startDate":"2025-04-01","status":"Awarded","provider":"RITZ","quarter":"2025Q2"},{"subFunction":"AJYAD","demandPlan":"Units Sub Division","description":"","owner":"Sameh Gomaa","budget":2000000,"y2025":2000000,"startDate":"2026-01-01","status":"Awarded","provider":"Ossama Al Azzouni","quarter":"2026Q1"},{"subFunction":"AJYAD","demandPlan":"Basement Demolition Contractor","description":"","owner":"Sameh Gomaa","budget":67115520,"y2025":33557760,"startDate":"2026-03-26","status":"Awarded","provider":"SBG","quarter":"2026Q1"},{"subFunction":"AJYAD","demandPlan":"AJYAD Marsh Insurance","description":"","owner":"Maher Almadani","budget":500000,"y2025":500000,"startDate":"2026-01-01","status":"Awarded","provider":"Marsh","quarter":"2026Q1"},{"subFunction":"Delivery","demandPlan":"CCTV","description":"Monitor progress & sites security","owner":"Farouq Asiri","budget":1832580,"y2025":1832580,"startDate":"2025-06-01","status":"Awarded","provider":"AMNCO","quarter":"2025Q2"},{"subFunction":"Design Related Services","demandPlan":"Design Peer Review Structure","description":"Design Peer review services – Structure","owner":"Mohamed Elsharkawy","budget":5000000,"y2025":2000000,"startDate":"2025-03-01","status":"Awarded","provider":"DAR ALRIYADH","quarter":"2025Q1"},{"subFunction":"Design Related Services","demandPlan":"Design Peer Review Traffic","description":"Design Peer review services – Traffic","owner":"Nauman Faiz","budget":1000000,"y2025":1000000,"startDate":"2025-03-01","status":"Awarded","provider":"DAR ALRIYADH","quarter":"2025Q1"},{"subFunction":"Design Related Services","demandPlan":"Design Peer Review Façade","description":"Design Peer review services – Façade","owner":"Mohamed Elsharkawy","budget":1700000,"y2025":700000,"startDate":"2025-03-01","status":"Awarded","provider":"DAR ALRIYADH","quarter":"2025Q1"},{"subFunction":"Site Survey Services","demandPlan":"Infrastructure Site Investigation Plots A,B,C","description":"Validate infra utilities data","owner":"Stuart Keane","budget":1151201,"y2025":1151201,"startDate":"2025-12-01","status":"Awarded","provider":"Omraniyoun","quarter":"2025Q4"},{"subFunction":"Design Related Services","demandPlan":"Security Building Pre-Concept Design","description":"","owner":"Ashraf Samer","budget":4560000,"y2025":1000000,"startDate":"2026-03-01","status":"Awarded","provider":"KHATIB & ALAMI","quarter":"2026Q1"},{"subFunction":"Site Survey Services","demandPlan":"Geological Study – Zamzam Well Impact","description":"","owner":"Feras Habis","budget":1092500,"y2025":1092500,"startDate":"2026-03-01","status":"Awarded","provider":"KFUPM","quarter":"2026Q1"},{"subFunction":"KSG","demandPlan":"RUA School Conditions Assessment","description":"","owner":"Niel Harris","budget":402187.5,"y2025":402187.5,"startDate":"2026-03-01","status":"Awarded","provider":"Omraniyoun","quarter":"2026Q1"},{"subFunction":"KSG","demandPlan":"Technical Support – Project Control Manager","description":"","owner":"Maher Almadani","budget":2640000,"y2025":1000000,"startDate":"2026-03-01","status":"Awarded","provider":"Compass","quarter":"2026Q1"},{"subFunction":"KSG","demandPlan":"Technical Support – Contracts Manager","description":"","owner":"Hashim AbdulQader","budget":1176000,"y2025":1000000,"startDate":"2026-03-01","status":"Awarded","provider":"Compass","quarter":"2026Q1"},{"subFunction":"Site Survey Services","demandPlan":"Amendment – Geotechnical Study 4 Add Plots","description":"","owner":"Ashraf Samer","budget":230000,"y2025":230000,"startDate":"2026-03-01","status":"Awarded","provider":"Dar Al Handasah","quarter":"2026Q1"},{"subFunction":"AJYAD","demandPlan":"DG – Cost Management Consultant","description":"Cost Management Consultant pre Contract","owner":"Maher Almadani","budget":3000000,"y2025":3000000,"startDate":"2025-12-01","status":"Awarded","provider":"DG Jones","quarter":"2025Q4"},{"subFunction":"AJYAD","demandPlan":"PLP Architecture","description":"AJYAD designer","owner":"Mohamed Elsharkawy","budget":99000000,"y2025":99000000,"startDate":"2025-03-20","status":"Awarded","provider":"PLP Architecture International Ltd","quarter":"2025Q1"},{"subFunction":"AJYAD","demandPlan":"PMC – Ajyad","description":"Ajyad PMC","owner":"Sameh Gomaa","budget":15000000,"y2025":15000000,"startDate":"2025-03-20","status":"Awarded","provider":"Hanmi Global Saudi Arabia","quarter":"2025Q1"},{"subFunction":"AJYAD","demandPlan":"Saudi Diyar Consultant","description":"Saudi Diar supervisor for AJYAD","owner":"Sameh Gomaa","budget":2000000,"y2025":2000000,"startDate":"2025-04-01","status":"Awarded","provider":"Saudi Diyar Consultants","quarter":"2025Q2"},{"subFunction":"AJYAD","demandPlan":"AJYAD Olive Arabia FM","description":"","owner":"Sameh Gomaa","budget":3000000,"y2025":3000000,"startDate":"2025-12-01","status":"Awarded","provider":"Olive Arabia","quarter":"2025Q4"},{"subFunction":"Delivery","demandPlan":"AOR – Supervision Topographical Survey","description":"AOR – Supervision","owner":"Dib Ismail","budget":131460,"y2025":131460,"startDate":"2025-04-01","status":"Awarded","provider":"Omraniyoun","quarter":"2025Q2"},{"subFunction":"Delivery","demandPlan":"Security Services","description":"End-to-end security solutions Zone A, B, C","owner":"Farouq Asiri","budget":500000,"y2025":500000,"startDate":"2025-04-01","status":"Awarded","provider":"Amnco","quarter":"2025Q2"},{"subFunction":"Delivery","demandPlan":"Drone & Photography Services","description":"Drone footage, time-lapse, documentation","owner":"Stuart Keane","budget":5000000,"y2025":5000000,"startDate":"2025-04-01","status":"Awarded","provider":"Falcon","quarter":"2025Q2"},{"subFunction":"Design Related Services","demandPlan":"CGI Production Service","description":"Animated videos – masterplan / buildings","owner":"Mohamed Elsharkawy","budget":4000000,"y2025":4000000,"startDate":"2025-09-01","status":"Awarded","provider":"CGI","quarter":"2025Q3"},{"subFunction":"Design Related Services","demandPlan":"Design Peer Review MEP","description":"Design Peer review – MEP","owner":"Mohamed Elsharkawy","budget":12000000,"y2025":12000000,"startDate":"2025-03-26","status":"Awarded","provider":"DAR ALRIYADH","quarter":"2025Q1"},{"subFunction":"Design Related Services","demandPlan":"Engineering & Government Services (AOR/EOR)","description":"Permitting & authority liaison","owner":"Mohammed Abduljawad","budget":3500000,"y2025":3500000,"startDate":"2025-03-01","status":"Awarded","provider":"Omraniyoun","quarter":"2025Q1"},{"subFunction":"Phase 1 enablement","demandPlan":"Contractor Alyamama – Demolition","description":"Demolition of existing buildings","owner":"Dib Ismail","budget":400000000,"y2025":40000000,"startDate":"2025-03-01","status":"Awarded","provider":"ALYAMAMA","quarter":"2025Q1"},{"subFunction":"Phase 1 enablement","demandPlan":"Enabling Works – Site Clearance","description":"Phase 1 Main Plot Enabling Works","owner":"Abu Bakr Algam","budget":300000000,"y2025":90000000,"startDate":"2025-06-25","status":"Awarded","provider":"Al Enjaz Trading","quarter":"2025Q2"},{"subFunction":"Phase 1 enablement","demandPlan":"Secondment – Technical Support","description":"Technical support JASARA & MSA","owner":"Hashim AbdulQader","budget":25000000,"y2025":25000000,"startDate":"2025-03-01","status":"Awarded","provider":"JASARA / COMPASS","quarter":"2025Q1"},{"subFunction":"Phase 1 enablement","demandPlan":"Supervision Consultant – Dar International","description":"Supervision – demolition & hoarding","owner":"Dib Ismail","budget":3500000,"y2025":3500000,"startDate":"2025-03-01","status":"Awarded","provider":"DAR Engineering","quarter":"2025Q1"},{"subFunction":"program CMP/DMP","demandPlan":"Detailed Master Plan (DMP)","description":"Detailed Master Plan","owner":"Arnold Rouverand","budget":250377613,"y2025":100000000,"startDate":"2026-06-01","status":"Awarded","provider":"AS+P / Buro Happold","quarter":"2026Q2"},{"subFunction":"program CMP/DMP","demandPlan":"KSG Program Management Consultant (PgMC)","description":"Portfolio management services","owner":"Hashim AbdulQader","budget":458957093,"y2025":24000000,"startDate":"2025-07-01","status":"Awarded","provider":"AECOM","quarter":"2025Q3"},{"subFunction":"Research Services","demandPlan":"Socioeconomic Data Collection & Impact Studies","description":"Household survey & socio-economic analysis","owner":"Arnold Rouverand","budget":3000000,"y2025":3000000,"startDate":"2026-01-01","status":"Awarded","provider":"BCG / JLL","quarter":"2026Q1"},{"subFunction":"Site Offices","demandPlan":"Site Offices – Design & Build","description":"Renovation – site office main plot","owner":"Sameh Gomaa","budget":37101484,"y2025":22260890,"startDate":"2025-07-01","status":"Awarded","provider":"Focal Buildings Solutions","quarter":"2025Q3"},{"subFunction":"Site Offices","demandPlan":"Site Supervision – Enablement & Offices","description":"Office for development team on site","owner":"Sameh Gomaa","budget":10000000,"y2025":5000000,"startDate":"2025-05-15","status":"Awarded","provider":"Khatib & Alami","quarter":"2025Q2"},{"subFunction":"Site Survey Services","demandPlan":"Detailed Hydrological & Geotechnical Studies","description":"Site investigation & geological study","owner":"Stuart Keane","budget":13000000,"y2025":13000000,"startDate":"2025-06-01","status":"Awarded","provider":"ACTS","quarter":"2025Q2"},{"subFunction":"Design Related Services","demandPlan":"Temporary Shaep Amer Bus Station – Design","description":"","owner":"Rayan Alharthi","budget":10000000,"y2025":5000000,"startDate":"2026-11-01","status":"EoI","provider":"","quarter":"2026Q4"},{"subFunction":"AJYAD","demandPlan":"AJYAD Construction Contractor","description":"AJYAD project construction contractor","owner":"Sameh Gomaa","budget":2000000,"y2025":500000,"startDate":"2026-01-01","status":"Not Start yet","provider":"","quarter":"2026Q1"},{"subFunction":"AJYAD","demandPlan":"AJYAD Construction","description":"","owner":"Sameh Gomaa","budget":4629463824,"y2025":1000000,"startDate":"2026-09-26","status":"Not Start yet","provider":"","quarter":"2026Q3"},{"subFunction":"Delivery","demandPlan":"PPE – Safety Equipment","description":"Personal Protective Equipment","owner":"Farouq Asiri","budget":75000,"y2025":75000,"startDate":"2025-04-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Delivery","demandPlan":"Advertising Boards","description":"Structural peer review – fences & boards","owner":"Ahmed Abu Bakr","budget":400000,"y2025":400000,"startDate":"2025-04-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Design Related Services","demandPlan":"Animation / Video Production","description":"Renderings – external elevations & lobbies","owner":"Mohamed Elsharkawy","budget":3000000,"y2025":3000000,"startDate":"2025-03-25","status":"Not Start yet","provider":"","quarter":"2025Q1"},{"subFunction":"KSG","demandPlan":"Guest Experience – Design Package","description":"Guest Experience Design Package","owner":"Niel Harris","budget":1440950,"y2025":1440950,"startDate":"2026-07-26","status":"Not Start yet","provider":"","quarter":"2026Q3"},{"subFunction":"KSG","demandPlan":"Guest Experience – Construction Package","description":"Guest Experience Construction","owner":"Niel Harris","budget":28819000,"y2025":28819000,"startDate":"2026-12-26","status":"Not Start yet","provider":"","quarter":"2026Q4"},{"subFunction":"Phase 1","demandPlan":"CMC – Phase 1A Pre-Contract","description":"Cost Management Consultant Phase 1A","owner":"Maher Almadani","budget":30000000,"y2025":5000000,"startDate":"2026-04-26","status":"Not Start yet","provider":"","quarter":"2026Q2"},{"subFunction":"Phase 1","demandPlan":"PMC – Phase 1 / PMCM","description":"Project management & Construction Management","owner":"Niel Harris","budget":10000000,"y2025":10000000,"startDate":"2025-06-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Real Estate Services","demandPlan":"Plot Subdivision Services","description":"Survey Krouki for RUA plots","owner":"Arnold Rouverand","budget":3000000,"y2025":1500000,"startDate":"2025-06-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Real Estate Services","demandPlan":"Sale Legal Services","description":"SPAs, MCDs, JOPDs etc.","owner":"Arnold Rouverand","budget":3000000,"y2025":3000000,"startDate":"2025-06-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Real Estate Services","demandPlan":"Units Sub-Division Services","description":"Units Sorting Reports – title deeds","owner":"Arnold Rouverand","budget":2500000,"y2025":1250000,"startDate":"2025-06-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Research Services","demandPlan":"Retail & F&B Trade Area Assessment","description":"Retail, F&B Trade area Assessment","owner":"Arnold Rouverand","budget":1000000,"y2025":900000,"startDate":"2026-01-01","status":"Not Start yet","provider":"BCG / JLL","quarter":"2026Q1"},{"subFunction":"Research Services","demandPlan":"Retail & F&B Asset Strategy – Detailed BC","description":"Validate CMP trade area assessment","owner":"Arnold Rouverand","budget":2000000,"y2025":1000000,"startDate":"2026-01-01","status":"Not Start yet","provider":"BCG / JLL","quarter":"2026Q1"},{"subFunction":"Research Services","demandPlan":"Hospitality Market Trends & Assessment","description":"Hospitality market analysis","owner":"Arnold Rouverand","budget":700000,"y2025":630000,"startDate":"2025-05-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Research Services","demandPlan":"Hospitality Asset Strategy – Detailed BC","description":"Site suitability & feasibility","owner":"Arnold Rouverand","budget":1000000,"y2025":500000,"startDate":"2025-05-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Research Services","demandPlan":"Utility Services Business Case","description":"District cooling, STP, solid waste PPP","owner":"Arnold Rouverand","budget":1000000,"y2025":500000,"startDate":"2026-01-01","status":"Not Start yet","provider":"BCG / JLL","quarter":"2026Q1"},{"subFunction":"Site Survey Services","demandPlan":"Environmental Impact Assessment","description":"Environmental & ecological surveys","owner":"Abu Bakr Algam","budget":1000000,"y2025":1000000,"startDate":"2025-04-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Site Survey Services","demandPlan":"Traffic Surveys","description":"Traffic data collection & analysis","owner":"Nauman Faiz","budget":1000000,"y2025":1000000,"startDate":"2025-06-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Specialty","demandPlan":"Retail Design Guidelines (RDD)","description":"Retail design & delivery guidelines","owner":"Shada Abubotain","budget":5000000,"y2025":2500000,"startDate":"2025-09-01","status":"Not Start yet","provider":"","quarter":"2025Q3"},{"subFunction":"Specialty","demandPlan":"Smart City","description":"Smart City requirements & strategy","owner":"Anuar Noor","budget":3000000,"y2025":3000000,"startDate":"2025-06-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Specialty","demandPlan":"Security Strategies","description":"Security requirements portfolio strategy","owner":"Abdulwahab Albishri","budget":2000000,"y2025":1000000,"startDate":"2025-06-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Specialty","demandPlan":"Natural Disaster & Crisis Management","description":"Natural disaster risk strategy","owner":"Farouq Asiri","budget":700000,"y2025":350000,"startDate":"2025-09-01","status":"Not Start yet","provider":"","quarter":"2025Q3"},{"subFunction":"Specialty","demandPlan":"FLS Consultant – Fire & Life Safety","description":"Fire & Life Safety","owner":"Farouq Asiri","budget":7000000,"y2025":500000,"startDate":"2025-06-25","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Specialty","demandPlan":"Design Standardization","description":"Design guidelines for all disciplines","owner":"Mohamed Elsharkawy","budget":20000000,"y2025":10000000,"startDate":"2025-07-26","status":"Not Start yet","provider":"","quarter":"2025Q3"},{"subFunction":"Specialty","demandPlan":"Guest Experience Supervision Package","description":"Guest journey & experience manual","owner":"Niel Harris","budget":864570,"y2025":2000000,"startDate":"2026-12-26","status":"Not Start yet","provider":"","quarter":"2026Q4"},{"subFunction":"Specialty","demandPlan":"Masterplan Delivery Strategy","description":"Consultant delivery strategy","owner":"Ahmed Abu Bakr","budget":30000000,"y2025":15000000,"startDate":"2025-09-01","status":"Not Start yet","provider":"","quarter":"2025Q3"},{"subFunction":"Specialty","demandPlan":"Built Environment Sustainability","description":"Sustainability strategy & certifications","owner":"Abu Bakr Algam","budget":3000000,"y2025":1950000,"startDate":"2025-06-01","status":"Not Start yet","provider":"","quarter":"2025Q2"},{"subFunction":"Phase 1","demandPlan":"Lead Design Consultant (LDC) – Phase 1A","description":"Phase-1 Lead Design Consultant","owner":"Niel Harris","budget":670042090,"y2025":120000000,"startDate":"2026-09-26","status":"RFP","provider":"","quarter":"2026Q3"},{"subFunction":"AJYAD","demandPlan":"AJYAD Post Contract CMC","description":"Cost Management Consultant Post Contract","owner":"Maher Almadani","budget":20815000,"y2025":4664563,"startDate":"2025-10-01","status":"Tender","provider":"","quarter":"2025Q4"},{"subFunction":"Site Survey Services","demandPlan":"SSJ-K&A Topographical Survey Verification","description":"","owner":"Sherif Elbialy","budget":525000,"y2025":525000,"startDate":"2026-11-01","status":"Tender","provider":"K&A","quarter":"2026Q4"},{"subFunction":"Development Operation","demandPlan":"GIS Implementation","description":"Enterprise GIS implementation","owner":"Omer Thiab","budget":4000000,"y2025":4000000,"startDate":"2025-06-01","status":"Transferred","provider":"","quarter":"2025Q2"}];
-
+ 
 let DATA = [];
 let chartDonut, chartSubFunc, chartQuarter;
-
+ 
 /* ════════════════════════════════════════════
    PARSE EXCEL / CSV
 ════════════════════════════════════════════ */
@@ -670,7 +670,7 @@ function parseFile(file) {
   };
   reader.readAsBinaryString(file);
 }
-
+ 
 function normalizeRows(rows) {
   return rows.map(r => {
     const keys = Object.keys(r);
@@ -707,7 +707,7 @@ function normalizeRows(rows) {
     };
   }).filter(r => r.demandPlan);
 }
-
+ 
 /* ════════════════════════════════════════════
    STATS HELPERS
 ════════════════════════════════════════════ */
@@ -718,7 +718,7 @@ const fmt = n => {
   return n.toFixed(0);
 };
 const fmtSAR = n => 'SAR ' + fmt(n);
-
+ 
 function getStatusClass(s) {
   const sl = s.toLowerCase();
   if (sl.includes('awarded')) return 's-awarded';
@@ -728,7 +728,7 @@ function getStatusClass(s) {
   if (sl.includes('eoi')) return 's-eoi';
   return 's-other';
 }
-
+ 
 function groupBy(arr, key) {
   return arr.reduce((acc, r) => {
     const v = r[key] || 'Unknown';
@@ -737,7 +737,7 @@ function groupBy(arr, key) {
     return acc;
   }, {});
 }
-
+ 
 /* ════════════════════════════════════════════
    BUILD DASHBOARD
 ════════════════════════════════════════════ */
@@ -752,19 +752,19 @@ function buildDashboard() {
   populateGlobalFilters();
   document.getElementById('gfCount').textContent = DATA.length + ' records';
 }
-
+ 
 /* ── KPIs ── */
 function buildKPIs() { FILTERED_DATA = [...DATA]; refreshKPIs(); }
-
+ 
 /* ── CHARTS ── */
 const PALETTE = ['#1a8cff','#00d4e8','#2ecc87','#f5a623','#ff4d6a','#8b5cf6','#f97316','#06b6d4','#a3e635','#e879f9'];
-
+ 
 function buildCharts() {
   buildDonut();
   buildSubFuncChart();
   buildQuarterChart();
 }
-
+ 
 function buildDonut() {
   if (chartDonut) chartDonut.destroy();
   const D = FILTERED_DATA.length ? FILTERED_DATA : DATA;
@@ -772,7 +772,7 @@ function buildDonut() {
   const labels = Object.keys(statusGroups);
   const vals   = labels.map(l => statusGroups[l].length);
   const total  = vals.reduce((a,b)=>a+b,0);
-
+ 
   // Custom label plugin — value + % on each slice
   const labelPlugin = {
     id: 'donutLabels',
@@ -800,7 +800,7 @@ function buildDonut() {
       });
     }
   };
-
+ 
   const ctx = document.getElementById('chartDonut');
   chartDonut = new Chart(ctx, {
     type: 'doughnut',
@@ -816,7 +816,7 @@ function buildDonut() {
     },
     plugins: [labelPlugin]
   });
-
+ 
   // Build HTML legend
   const leg = document.getElementById('donutLegend');
   if (leg) {
@@ -829,7 +829,7 @@ function buildDonut() {
       </div>`).join('');
   }
 }
-
+ 
 function buildSubFuncChart() {
   if (chartSubFunc) chartSubFunc.destroy();
   const D = FILTERED_DATA.length ? FILTERED_DATA : DATA;
@@ -837,7 +837,7 @@ function buildSubFuncChart() {
   const entries = Object.entries(grouped)
     .map(([k,v]) => ({ k, b: v.reduce((a,r)=>a+r.budget,0) }))
     .sort((a,b) => b.b - a.b).slice(0, 10);
-
+ 
   // Datalabels plugin inline (value at end of bar)
   const barLabelPlugin = {
     id: 'barLabels',
@@ -857,7 +857,7 @@ function buildSubFuncChart() {
       });
     }
   };
-
+ 
   const ctx = document.getElementById('chartSubFunc');
   chartSubFunc = new Chart(ctx, {
     type: 'bar',
@@ -886,13 +886,13 @@ function buildSubFuncChart() {
     plugins: [barLabelPlugin]
   });
 }
-
+ 
 function buildQuarterChart() {
   if (chartQuarter) chartQuarter.destroy();
   const D = FILTERED_DATA.length ? FILTERED_DATA : DATA;
   const grouped = groupBy(D.filter(r=>r.quarter), 'quarter');
   const quarters = Object.keys(grouped).sort();
-
+ 
   // Top value label plugin
   const topLabelPlugin = {
     id: 'topLabels',
@@ -913,7 +913,7 @@ function buildQuarterChart() {
       });
     }
   };
-
+ 
   const ctx = document.getElementById('chartQuarter');
   chartQuarter = new Chart(ctx, {
     type: 'bar',
@@ -938,7 +938,7 @@ function buildQuarterChart() {
     },
     plugins: [topLabelPlugin]
   });
-
+ 
   // Build quarter legend
   const leg = document.getElementById('quarterLegend');
   if (leg) {
@@ -952,50 +952,50 @@ function buildQuarterChart() {
       </span>`).join('');
   }
 }
-
-
-
-
+ 
+ 
+ 
+ 
 /* ════════════════════════════════════════════
    GLOBAL FILTER — applies to ALL pages
 ════════════════════════════════════════════ */
 let FILTERED_DATA = [];
-
+ 
 function populateGlobalFilters() {
   const statuses = [...new Set(DATA.map(r=>r.status).filter(Boolean))].sort();
   const funcs    = [...new Set(DATA.map(r=>r.subFunction).filter(Boolean))].sort();
   const years    = [...new Set(DATA.map(r=>r.startDate?r.startDate.slice(0,4):null).filter(Boolean))].sort();
-
+ 
   const selS = document.getElementById('gfStatus');
   const selF = document.getElementById('gfFunc');
   const selY = document.getElementById('gfYear');
-
+ 
   selS.innerHTML = '<option value="">All Statuses</option>' + statuses.map(s=>`<option value="${s}">${s}</option>`).join('');
   selF.innerHTML = '<option value="">All Functions</option>' + funcs.map(f=>`<option value="${f}">${f}</option>`).join('');
   selY.innerHTML = '<option value="">All Years</option>' + years.map(y=>`<option value="${y}">${y}</option>`).join('');
 }
-
+ 
 function applyGlobalFilter() {
   const s = document.getElementById('gfStatus').value;
   const f = document.getElementById('gfFunc').value;
   const y = document.getElementById('gfYear').value;
   const q = document.getElementById('gfSearch').value.toLowerCase().trim();
-
+ 
   FILTERED_DATA = DATA.filter(r =>
     (!s || r.status === s) &&
     (!f || r.subFunction === f) &&
     (!y || (r.startDate && r.startDate.startsWith(y))) &&
     (!q || r.demandPlan.toLowerCase().includes(q) || r.owner.toLowerCase().includes(q) || r.subFunction.toLowerCase().includes(q))
   );
-
+ 
   const total = DATA.length;
   const shown = FILTERED_DATA.length;
   document.getElementById('gfCount').textContent = shown < total ? `${shown} / ${total} records` : `${total} records`;
-
+ 
   // Refresh all pages with filtered data
   refreshAllPages();
 }
-
+ 
 function clearGlobalFilter() {
   document.getElementById('gfStatus').value = '';
   document.getElementById('gfFunc').value  = '';
@@ -1003,7 +1003,7 @@ function clearGlobalFilter() {
   document.getElementById('gfSearch').value = '';
   applyGlobalFilter();
 }
-
+ 
 function refreshAllPages() {
   refreshKPIs();
   refreshCharts();
@@ -1012,7 +1012,7 @@ function refreshAllPages() {
   buildExecutiveSummaryFromData(FILTERED_DATA);
   buildProgressFromData(FILTERED_DATA);
 }
-
+ 
 /* ── TABLE ── */
 function buildTable() {
   document.getElementById('tableHead').innerHTML = `
@@ -1030,7 +1030,7 @@ function buildTable() {
   FILTERED_DATA = [...DATA];
   renderTable(FILTERED_DATA);
 }
-
+ 
 function renderTable(rows) {
   document.getElementById('tableBody').innerHTML = rows.map((r,i) => `
     <tr>
@@ -1045,7 +1045,7 @@ function renderTable(rows) {
       <td style="max-width:130px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text-secondary)" title="${r.provider}">${r.provider||'—'}</td>
     </tr>`).join('');
 }
-
+ 
 /* ── REFRESH KPIs (uses FILTERED_DATA) ── */
 function refreshKPIs() {
   const D = FILTERED_DATA;
@@ -1055,7 +1055,7 @@ function refreshKPIs() {
   const totalY2025  = D.reduce((a,r)=>a+r.y2025,0);
   const awarded     = D.filter(r=>r.status.toLowerCase().includes('awarded')).length;
   const notStarted  = D.filter(r=>r.status.toLowerCase().includes('not start')).length;
-
+ 
   const kpiData = [
     {label:'Total Projects',  value: total,                sub:'Across all functions',        cls:'k-blue'},
     {label:'Total Budget',    value: fmtSAR(totalBudget),  sub:'Estimated value',             cls:'k-gold'},
@@ -1079,14 +1079,14 @@ function refreshKPIs() {
       <div class="kpi-sub">${k.sub}</div>
     </div>`).join('');
 }
-
+ 
 /* ── REFRESH CHARTS ── */
 function refreshCharts() {
   buildDonut();
   buildSubFuncChart();
   buildQuarterChart();
 }
-
+ 
 /* ── REFRESH TIMELINE ── */
 function refreshTimeline() {
   const D = FILTERED_DATA;
@@ -1113,13 +1113,13 @@ function refreshTimeline() {
     </div>`;
   }).join('');
 }
-
+ 
 function buildTimeline() { FILTERED_DATA = FILTERED_DATA.length ? FILTERED_DATA : [...DATA]; refreshTimeline(); }
-
-
+ 
+ 
 /* ── EXECUTIVE SUMMARY ── */
 function buildExecutiveSummary() { buildExecutiveSummaryFromData(FILTERED_DATA.length ? FILTERED_DATA : DATA); }
-
+ 
 function buildExecutiveSummaryFromData(D) {
   const total = D.length; if(!total) return;
   const totalBudget = D.reduce((a,r)=>a+r.budget,0);
@@ -1130,12 +1130,12 @@ function buildExecutiveSummaryFromData(D) {
   const notStartBudget = notStart.reduce((a,r)=>a+r.budget,0);
   const rfp = D.filter(r=>r.status.toLowerCase()==='rfp');
   const tender = D.filter(r=>r.status.toLowerCase()==='tender');
-
+ 
   const byFunc = groupBy(D,'subFunction');
   const funcBudgets = Object.entries(byFunc).map(([k,v])=>({k,b:v.reduce((a,r)=>a+r.budget,0)})).sort((a,b)=>b.b-a.b);
   const topFuncs = funcBudgets.slice(0,5);
   const maxB = topFuncs[0]?.b || 1;
-
+ 
   const statuses = [
     {label:'Awarded', count:awarded.length, color:'#2ecc87'},
     {label:'Not Started', count:notStart.length, color:'#8899bb'},
@@ -1143,7 +1143,7 @@ function buildExecutiveSummaryFromData(D) {
     {label:'Tender', count:tender.length, color:'#00d4e8'},
     {label:'EoI / Other', count:D.length-awarded.length-notStart.length-rfp.length-tender.length, color:'#f5a623'},
   ];
-
+ 
   document.getElementById('exec-grid').innerHTML = `
     <div class="exec-section">
       <div class="exec-title">Procurement Overview</div>
@@ -1190,7 +1190,7 @@ function buildExecutiveSummaryFromData(D) {
     </div>
   `;
 }
-
+ 
 /* ════════════════════════════════════════════
    PROGRESS PAGE – DONUT PER SUB-FUNCTION
 ════════════════════════════════════════════ */
@@ -1204,7 +1204,7 @@ const STATUS_COLORS = {
 };
 const STATUS_ORDER = ['Not Start yet','RFP','Tender','Awarded','EoI','Transferred'];
 let progressCharts = {};
-
+ 
 function normalizeStatus(s) {
   const sl = s.toLowerCase().trim();
   if (sl.includes('not start') || sl.includes('pending')) return 'Not Start yet';
@@ -1215,16 +1215,16 @@ function normalizeStatus(s) {
   if (sl.includes('transfer')) return 'Transferred';
   return s.trim();
 }
-
+ 
 function buildProgress() { buildProgressFromData(FILTERED_DATA.length ? FILTERED_DATA : DATA); }
-
+ 
 function buildProgressFromData(D) {
   // Destroy old charts
   Object.values(progressCharts).forEach(c => { try { c.destroy(); } catch(e){} });
   progressCharts = {};
-
+ 
   const grid = document.getElementById('progressGrid');
-
+ 
   // Group by Sub-Function using D (filtered)
   const byFunc = {};
   D.forEach(r => {
@@ -1233,9 +1233,9 @@ function buildProgressFromData(D) {
     const ns = normalizeStatus(r.status);
     byFunc[sf][ns] = (byFunc[sf][ns] || 0) + 1;
   });
-
+ 
   const funcs = Object.keys(byFunc).sort();
-
+ 
   grid.innerHTML = funcs.map((fn, fi) => `
     <div class="prog-card" id="prog-card-${fi}">
       <div class="prog-card-title">${fn}</div>
@@ -1249,30 +1249,30 @@ function buildProgressFromData(D) {
       <div class="prog-total">Total = <span id="prog-total-${fi}">0</span></div>
     </div>
   `).join('');
-
+ 
   // Build each chart after DOM is ready
   requestAnimationFrame(() => {
     funcs.forEach((fn, fi) => {
       const counts = byFunc[fn];
       const total = Object.values(counts).reduce((a,b)=>a+b, 0);
-
+ 
       // Build ordered labels/data only for statuses present
       const present = STATUS_ORDER.filter(s => counts[s] > 0);
       // Also include any statuses not in order
       const extra = Object.keys(counts).filter(s => !STATUS_ORDER.includes(s));
       const allStatuses = [...present, ...extra];
-
+ 
       const labels = allStatuses;
       const vals = allStatuses.map(s => counts[s] || 0);
       const colors = allStatuses.map(s => STATUS_COLORS[s] || '#445577');
       const borderColors = allStatuses.map(s =>
         s === 'Not Start yet' ? '#5a7aa8' : (STATUS_COLORS[s] || '#556688')
       );
-
+ 
       // Center number
       document.getElementById(`prog-center-${fi}`).textContent = total;
       document.getElementById(`prog-total-${fi}`).textContent = total;
-
+ 
       // Legend
       document.getElementById(`prog-legend-${fi}`).innerHTML =
         STATUS_ORDER.concat(extra).map(s => `
@@ -1281,10 +1281,10 @@ function buildProgressFromData(D) {
             <span class="prog-leg-label">${s}</span>
             <span class="prog-leg-count">${counts[s] || 0}</span>
           </div>`).join('');
-
+ 
       // Chart.js donut with outer label plugin
       const ctx = document.getElementById(`prog-canvas-${fi}`).getContext('2d');
-
+ 
       // Plugin to draw value labels on slices
       const sliceLabelPlugin = {
         id: 'sliceLabels_'+fi,
@@ -1310,7 +1310,7 @@ function buildProgressFromData(D) {
           });
         }
       };
-
+ 
       progressCharts[fi] = new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -1341,7 +1341,7 @@ function buildProgressFromData(D) {
     });
   });
 }
-
+ 
 /* ════════════════════════════════════════════
    UI NAVIGATION
 ════════════════════════════════════════════ */
@@ -1352,29 +1352,29 @@ function showPage(name) {
   const idx = ['executive','overview','portfolio','timeline','progress'].indexOf(name);
   document.querySelectorAll('.tab-btn')[idx].classList.add('active');
 }
-
+ 
 function hideOverlay() {
   document.getElementById('uploadOverlay').classList.remove('show');
 }
-
+ 
 /* ════════════════════════════════════════════
    GITHUB DATA STORAGE — shared across all users
    Owner uploads → saved to GitHub → all viewers see same data
 ════════════════════════════════════════════ */
-
+ 
 // ⚙️ CONFIGURE YOUR GITHUB DETAILS HERE:
 const GH_USER   = 'AHMEDSHRARA';
-const GH_REPO   = 'Annual-Procurement-Plan-Dashboard';
+const GH_REPO   = 'APP_Dashboard';
 const GH_FILE   = 'data.json';
 const GH_BRANCH = 'main';
-
+ 
 // GitHub Personal Access Token (fine-grained, contents:write)
 // Set this once — viewers only need read access (no token needed)
 let GH_TOKEN = localStorage.getItem('gh_token') || '';
-
+ 
 const API_BASE = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}`;
 const RAW_URL  = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`;
-
+ 
 /* ── LOAD data from GitHub (all users) ── */
 async function loadFromGitHub() {
   showLoadingState('Loading dashboard data…');
@@ -1396,14 +1396,14 @@ async function loadFromGitHub() {
     document.getElementById('uploadOverlay').classList.add('show');
   }
 }
-
+ 
 /* ── SAVE data to GitHub (owner only) ── */
 async function saveToGitHub(data, label) {
   if (!GH_TOKEN) {
     showTokenDialog(data, label);
     return;
   }
-
+ 
   showLoadingState('Saving to GitHub…');
   try {
     // Get current file SHA (needed for update)
@@ -1417,7 +1417,7 @@ async function saveToGitHub(data, label) {
         sha = info.sha;
       }
     } catch(e) {}
-
+ 
     const payload = {
       data,
       label,
@@ -1425,14 +1425,14 @@ async function saveToGitHub(data, label) {
       uploadedBy: GH_USER,
       count: data.length
     };
-
+ 
     const body = {
       message: `Update dashboard data: ${label} (${data.length} records)`,
       content: btoa(unescape(encodeURIComponent(JSON.stringify(payload)))),
       branch: GH_BRANCH,
     };
     if (sha) body.sha = sha;
-
+ 
     const res = await fetch(API_BASE, {
       method: 'PUT',
       headers: {
@@ -1442,9 +1442,9 @@ async function saveToGitHub(data, label) {
       },
       body: JSON.stringify(body)
     });
-
+ 
     hideLoadingState();
-
+ 
     if (res.ok) {
       showSuccessToast(`✅ Data saved! All ${data.length} records are now live for all viewers.`);
     } else {
@@ -1456,7 +1456,7 @@ async function saveToGitHub(data, label) {
     alert('Error saving to GitHub: ' + e.message);
   }
 }
-
+ 
 /* ── TOKEN DIALOG ── */
 function showTokenDialog(data, label) {
   const d = document.createElement('div');
@@ -1486,7 +1486,7 @@ function showTokenDialog(data, label) {
   document.body.appendChild(d);
   document.getElementById('tokenInput').focus();
 }
-
+ 
 function submitToken(label) {
   const token = document.getElementById('tokenInput').value.trim();
   const remember = document.getElementById('rememberToken').checked;
@@ -1496,7 +1496,7 @@ function submitToken(label) {
   document.getElementById('tokenDialog').remove();
   saveToGitHub(window._pendingData, window._pendingLabel);
 }
-
+ 
 /* ── UI HELPERS ── */
 function showLoadingState(msg) {
   let el = document.getElementById('loadingOverlay');
@@ -1514,7 +1514,7 @@ function hideLoadingState() {
   const el = document.getElementById('loadingOverlay');
   if (el) el.remove();
 }
-
+ 
 function showViewerNotice(label, by, at) {
   const date = at ? new Date(at).toLocaleDateString('en-GB', {day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}) : '';
   const toast = document.createElement('div');
@@ -1524,7 +1524,7 @@ function showViewerNotice(label, by, at) {
   setTimeout(()=>{ if(toast.parentNode) toast.style.opacity='0'; toast.style.transition='opacity 0.5s'; }, 6000);
   setTimeout(()=>{ if(toast.parentNode) toast.remove(); }, 6500);
 }
-
+ 
 function showSuccessToast(msg) {
   const toast = document.createElement('div');
   toast.style.cssText = `position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:999;background:#0d1a2e;border:1px solid rgba(46,204,135,0.4);border-radius:8px;padding:10px 20px;font-family:'Barlow',sans-serif;font-size:11px;color:#2ecc87;box-shadow:0 4px 16px rgba(0,0,0,0.5);`;
@@ -1532,11 +1532,11 @@ function showSuccessToast(msg) {
   document.body.appendChild(toast);
   setTimeout(()=>{ if(toast.parentNode) toast.remove(); }, 5000);
 }
-
+ 
 function showUploadOverlay() {
   document.getElementById('uploadOverlay').classList.add('show');
 }
-
+ 
 /* ════════════════════════════════════════════
    FILE INPUTS
 ════════════════════════════════════════════ */
@@ -1544,10 +1544,10 @@ function handleFile(file) {
   if (!file) return;
   parseFile(file);
 }
-
+ 
 document.getElementById('fileInput').addEventListener('change', e => handleFile(e.target.files[0]));
 document.getElementById('fileInput2').addEventListener('change', e => handleFile(e.target.files[0]));
-
+ 
 document.getElementById('skipUpload').addEventListener('click', () => {
   DATA = PRELOADED;
   const label = 'APP dataset';
@@ -1556,7 +1556,7 @@ document.getElementById('skipUpload').addEventListener('click', () => {
   buildDashboard();
   hideOverlay();
 });
-
+ 
 // Drag & drop on overlay
 const uploadBox = document.getElementById('uploadBox');
 uploadBox.addEventListener('dragover', e => { e.preventDefault(); uploadBox.classList.add('drag-over'); });
@@ -1566,12 +1566,12 @@ uploadBox.addEventListener('drop', e => {
   const file = e.dataTransfer.files[0];
   if (file) handleFile(file);
 });
-
+ 
 /* ── Auto-load on page start — tries GitHub first ── */
 window.addEventListener('load', () => {
   loadFromGitHub();
 });
-
+ 
 /* ── Spin animation ── */
 const spinStyle = document.createElement('style');
 spinStyle.textContent = `
@@ -1580,10 +1580,11 @@ spinStyle.textContent = `
   .toast-anim{animation:fadeInUp 0.3s ease}
 `;
 document.head.appendChild(spinStyle);
-
+ 
 /* ── Page title update ── */
 document.title = 'Annual Procurement Plan – APP';
-
+ 
 </script>
 </body>
 </html>
+ 
