@@ -478,10 +478,10 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
     <div class="upload-box" id="uploadBox">
       <div class="upload-icon">📊</div>
       <div class="upload-title">Annual Procurement Plan</div>
-      <div class="upload-desc">Upload your Excel file (CSV, XLS, XLSX) to load data<br/>Data will be shared with all viewers automatically</div>
+      <div class="upload-desc">Upload your Excel file (CSV, XLS, XLSX) to load data<br/>or use the pre-loaded APP dataset</div>
       <label class="upload-cta" for="fileInput">📂 Upload Excel / CSV</label>
       <input type="file" id="fileInput" accept=".xlsx,.xls,.csv"/>
-      <div class="upload-skip" id="skipUpload">→ Use pre-loaded APP data</div>
+      <div class="upload-skip" id="skipUpload">→ Use pre-loaded data</div>
     </div>
   </div>
  
@@ -491,7 +491,7 @@ body { font-family: var(--font-main); background: var(--bg-base); color: var(--t
       <div class="brand-icon">APP</div>
       <div class="brand-text">
         <div class="brand-title">Annual Procurement Plan</div>
-        <div class="brand-sub">Annual Procurement Plan · Live Dashboard</div>
+        <div class="brand-sub">APP · Live Dashboard</div>
       </div>
     </div>
     <nav class="nav-tabs">
@@ -661,8 +661,11 @@ function parseFile(file) {
       if (!rows.length) { alert('No data found in sheet.'); return; }
       DATA = normalizeRows(rows);
       const label = file.name.replace(/\.[^.]+$/, '');
+      const now = new Date().toISOString();
       document.getElementById('dataLabel').textContent = file.name + ' · ' + DATA.length + ' records';
-      // Save to GitHub so ALL viewers see the same data
+      // 1. Save to localStorage IMMEDIATELY (works on refresh/zoom right away)
+      saveToLocalStorage(DATA, label, GH_USER, now);
+      // 2. Save to GitHub so ALL viewers see the same data
       saveToGitHub(DATA, label);
       buildDashboard();
       hideOverlay();
@@ -1377,24 +1380,76 @@ const RAW_URL  = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_B
  
 /* ── LOAD data from GitHub (all users) ── */
 async function loadFromGitHub() {
+  // Step 1: Try localStorage first (instant — works on refresh/zoom)
+  const cached = loadFromLocalStorage();
+  if (cached && cached.data && cached.data.length > 0) {
+    DATA = cached.data;
+    document.getElementById('dataLabel').textContent = cached.label + ' · ' + DATA.length + ' records';
+    buildDashboard();
+    hideOverlay();
+    showViewerNotice(cached.label, cached.uploadedBy || '', cached.uploadedAt || '');
+    // Silently sync from GitHub in background (for other viewers)
+    syncFromGitHubSilent();
+    return;
+  }
+  // Step 2: Try GitHub (for other viewers who don't have localStorage)
   showLoadingState('Loading dashboard data…');
   try {
     const res = await fetch(`https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`);
     if (!res.ok) throw new Error('No data file yet');
     const json = await res.json();
-    DATA = json.data || [];
+    if (!json.data || json.data.length === 0) throw new Error('Empty data');
+    DATA = json.data;
     const label = json.label || 'Shared dataset';
-    const uploadedBy = json.uploadedBy || '';
-    const uploadedAt = json.uploadedAt || '';
+    // Cache in localStorage for this viewer
+    saveToLocalStorage(DATA, label, json.uploadedBy || '', json.uploadedAt || '');
     document.getElementById('dataLabel').textContent = label + ' · ' + DATA.length + ' records';
     buildDashboard();
     hideOverlay();
-    showViewerNotice(label, uploadedBy, uploadedAt);
+    showViewerNotice(label, json.uploadedBy || '', json.uploadedAt || '');
   } catch(e) {
-    // No data on GitHub yet — show upload screen
     hideLoadingState();
     document.getElementById('uploadOverlay').classList.add('show');
   }
+}
+ 
+async function syncFromGitHubSilent() {
+  try {
+    const res = await fetch(`https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`);
+    if (!res.ok) return;
+    const json = await res.json();
+    if (!json.data || json.data.length === 0) return;
+    // Only update if GitHub has newer data
+    const cached = loadFromLocalStorage();
+    const ghTime = new Date(json.uploadedAt || 0).getTime();
+    const localTime = new Date(cached?.uploadedAt || 0).getTime();
+    if (ghTime > localTime) {
+      DATA = json.data;
+      saveToLocalStorage(DATA, json.label || 'Dataset', json.uploadedBy || '', json.uploadedAt || '');
+      document.getElementById('dataLabel').textContent = (json.label || 'Dataset') + ' · ' + DATA.length + ' records';
+      buildDashboard();
+    }
+  } catch(e) {}
+}
+ 
+/* ── localStorage helpers ── */
+const LS_KEY = 'app_dashboard_v2';
+ 
+function saveToLocalStorage(data, label, uploadedBy, uploadedAt) {
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify({ data, label, uploadedBy, uploadedAt }));
+  } catch(e) {
+    // Storage full — clear and retry
+    localStorage.clear();
+    try { localStorage.setItem(LS_KEY, JSON.stringify({ data, label, uploadedBy, uploadedAt })); } catch(e2) {}
+  }
+}
+ 
+function loadFromLocalStorage() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
 }
  
 /* ── SAVE data to GitHub (owner only) ── */
@@ -1551,7 +1606,9 @@ document.getElementById('fileInput2').addEventListener('change', e => handleFile
 document.getElementById('skipUpload').addEventListener('click', () => {
   DATA = PRELOADED;
   const label = 'APP dataset';
+  const now = new Date().toISOString();
   document.getElementById('dataLabel').textContent = label + ' · ' + DATA.length + ' records';
+  saveToLocalStorage(DATA, label, GH_USER, now);
   saveToGitHub(DATA, label);
   buildDashboard();
   hideOverlay();
@@ -1574,16 +1631,10 @@ window.addEventListener('load', () => {
  
 /* ── Spin animation ── */
 const spinStyle = document.createElement('style');
-spinStyle.textContent = `
-  @keyframes spin{to{transform:rotate(360deg)}}
-  @keyframes fadeInUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-  .toast-anim{animation:fadeInUp 0.3s ease}
-`;
+spinStyle.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
 document.head.appendChild(spinStyle);
- 
-/* ── Page title update ── */
-document.title = 'Annual Procurement Plan – APP';
  
 </script>
 </body>
 </html>
+ 
