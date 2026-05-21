@@ -661,14 +661,11 @@ function parseFile(file) {
       if (!rows.length) { alert('No data found in sheet.'); return; }
       DATA = normalizeRows(rows);
       const label = file.name.replace(/\.[^.]+$/, '');
-      const now = new Date().toISOString();
       document.getElementById('dataLabel').textContent = file.name + ' · ' + DATA.length + ' records';
-      // 1. Save to localStorage IMMEDIATELY (works on refresh/zoom right away)
-      saveToLocalStorage(DATA, label, GH_USER, now);
-      // 2. Save to GitHub so ALL viewers see the same data
-      saveToGitHub(DATA, label);
       buildDashboard();
       hideOverlay();
+      // Save to GitHub — all viewers will load this data
+      saveToGitHub(DATA, label);
     } catch(err) { alert('Could not parse file: ' + err.message); }
   };
   reader.readAsBinaryString(file);
@@ -1373,37 +1370,24 @@ const GH_BRANCH = 'main';
  
 // GitHub Personal Access Token (fine-grained, contents:write)
 // Set this once — viewers only need read access (no token needed)
-let GH_TOKEN = localStorage.getItem('gh_token') || '';
+let GH_TOKEN = (function(){ try { return localStorage.getItem("gh_token")||""; } catch(e){ return ""; } })();
  
 const API_BASE = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}`;
 const RAW_URL  = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`;
  
 /* ── LOAD data from GitHub (all users) ── */
 async function loadFromGitHub() {
-  // Step 1: Try localStorage first (instant — works on refresh/zoom)
-  const cached = loadFromLocalStorage();
-  if (cached && cached.data && cached.data.length > 0) {
-    DATA = cached.data;
-    document.getElementById('dataLabel').textContent = cached.label + ' · ' + DATA.length + ' records';
-    buildDashboard();
-    hideOverlay();
-    showViewerNotice(cached.label, cached.uploadedBy || '', cached.uploadedAt || '');
-    // Silently sync from GitHub in background (for other viewers)
-    syncFromGitHubSilent();
-    return;
-  }
-  // Step 2: Try GitHub (for other viewers who don't have localStorage)
   showLoadingState('Loading dashboard data…');
   try {
-    const res = await fetch(`https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`);
-    if (!res.ok) throw new Error('No data file yet');
+    const url = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('No data');
     const json = await res.json();
-    if (!json.data || json.data.length === 0) throw new Error('Empty data');
+    if (!json.data || json.data.length === 0) throw new Error('Empty');
     DATA = json.data;
-    const label = json.label || 'Shared dataset';
-    // Cache in localStorage for this viewer
-    saveToLocalStorage(DATA, label, json.uploadedBy || '', json.uploadedAt || '');
+    const label = json.label || 'APP dataset';
     document.getElementById('dataLabel').textContent = label + ' · ' + DATA.length + ' records';
+    hideLoadingState();
     buildDashboard();
     hideOverlay();
     showViewerNotice(label, json.uploadedBy || '', json.uploadedAt || '');
@@ -1411,45 +1395,6 @@ async function loadFromGitHub() {
     hideLoadingState();
     document.getElementById('uploadOverlay').classList.add('show');
   }
-}
- 
-async function syncFromGitHubSilent() {
-  try {
-    const res = await fetch(`https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/${GH_BRANCH}/${GH_FILE}?t=${Date.now()}`);
-    if (!res.ok) return;
-    const json = await res.json();
-    if (!json.data || json.data.length === 0) return;
-    // Only update if GitHub has newer data
-    const cached = loadFromLocalStorage();
-    const ghTime = new Date(json.uploadedAt || 0).getTime();
-    const localTime = new Date(cached?.uploadedAt || 0).getTime();
-    if (ghTime > localTime) {
-      DATA = json.data;
-      saveToLocalStorage(DATA, json.label || 'Dataset', json.uploadedBy || '', json.uploadedAt || '');
-      document.getElementById('dataLabel').textContent = (json.label || 'Dataset') + ' · ' + DATA.length + ' records';
-      buildDashboard();
-    }
-  } catch(e) {}
-}
- 
-/* ── localStorage helpers ── */
-const LS_KEY = 'app_dashboard_v2';
- 
-function saveToLocalStorage(data, label, uploadedBy, uploadedAt) {
-  try {
-    localStorage.setItem(LS_KEY, JSON.stringify({ data, label, uploadedBy, uploadedAt }));
-  } catch(e) {
-    // Storage full — clear and retry
-    localStorage.clear();
-    try { localStorage.setItem(LS_KEY, JSON.stringify({ data, label, uploadedBy, uploadedAt })); } catch(e2) {}
-  }
-}
- 
-function loadFromLocalStorage() {
-  try {
-    const raw = localStorage.getItem(LS_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch(e) { return null; }
 }
  
 /* ── SAVE data to GitHub (owner only) ── */
@@ -1606,9 +1551,7 @@ document.getElementById('fileInput2').addEventListener('change', e => handleFile
 document.getElementById('skipUpload').addEventListener('click', () => {
   DATA = PRELOADED;
   const label = 'APP dataset';
-  const now = new Date().toISOString();
   document.getElementById('dataLabel').textContent = label + ' · ' + DATA.length + ' records';
-  saveToLocalStorage(DATA, label, GH_USER, now);
   saveToGitHub(DATA, label);
   buildDashboard();
   hideOverlay();
@@ -1626,6 +1569,7 @@ uploadBox.addEventListener('drop', e => {
  
 /* ── Auto-load on page start — tries GitHub first ── */
 window.addEventListener('load', () => {
+  // Always load from GitHub — this ensures Power BI refresh/zoom works
   loadFromGitHub();
 });
  
@@ -1638,3 +1582,7 @@ document.head.appendChild(spinStyle);
 </body>
 </html>
  
+
+
+
+
